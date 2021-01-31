@@ -1,0 +1,2 @@
+cloud computing means storing and accessing data and programs over the internet instead of your computer hard drive
+it involves computing over a network where a program or application may run on many connected computers at the same time
