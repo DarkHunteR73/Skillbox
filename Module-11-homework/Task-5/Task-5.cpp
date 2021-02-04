@@ -8,12 +8,17 @@ int main()
     setlocale(LC_ALL, "Russian");
 
     float downloadSize, downloadSpeed;
+    while (true)
+    {
+        cout << "Укажите размер файла для скачивания: ";
+        cin >> downloadSize;
 
-    cout << "Укажите размер файла для скачивания: ";
-    cin >> downloadSize;
+        cout << "Скорость скачивания Мб/с: ";
+        cin >> downloadSpeed;
 
-    cout << "Скорость скачивания Мб/с: ";
-    cin >> downloadSpeed;
+        if (downloadSize > 0 && downloadSpeed > 0) break;
+        cout << "Ошибка! Введённые значения должны быть больше нуля.\n";
+    }
 
 
     for (float currentDownload = 0.0f, timer = 1; currentDownload < downloadSize; timer++)
