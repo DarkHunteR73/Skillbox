@@ -29,6 +29,7 @@ int main()
         }
         damage *= (1.0f - resistance);
         health -= damage;
+        if (health < 0) health = 0.0f;
         cout << "Проходит урон в "<<damage<<" ед. Здоровья осталось: " << health << endl;
     }
     cout << "Орк убит\n";
