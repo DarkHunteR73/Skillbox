@@ -25,7 +25,7 @@ int main()
     {
         int result = sideX * sideY * sideZ;
         cout << "Из этого бруска можно изготовить " << result << " кубиков.\n";
-        float cubeSide = floor(cbrt(result));
+        int cubeSide = cbrt(result);
         if (cubeSide < 2) cout << "Из данного количества кубиков не получится собрать набор.\n";
         else cout << "Из них можно составить набор из " << pow(cubeSide, 3) << " кубиков.\n";
     }
