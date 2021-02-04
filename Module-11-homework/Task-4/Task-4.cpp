@@ -15,12 +15,15 @@ int main()
         cout << "Ошибка! Введённые размеры должны быть положительными. Введите снова.\n";
     }
 
-    x = floor(x / 5);   y = floor(y / 5);   z = floor(z / 5);
+    int sideX = static_cast<int>(x / 5);
+    int sideY = static_cast<int>(y / 5);
+    int sideZ = static_cast<int>(z / 5);
 
-    if (x < 1 || y < 1 || z < 1) cout << "Из бруска таких размеров не получится сделать ни одного кубика нужного размера\n";
+
+    if (sideX <= 0 || sideY <= 0 || sideZ <= 0) cout << "Из бруска таких размеров не получится сделать ни одного кубика нужного размера\n";
     else
     {
-        float result = x * y * z;
+        int result = sideX * sideY * sideZ;
         cout << "Из этого бруска можно изготовить " << result << " кубиков.\n";
         float cubeSide = floor(cbrt(result));
         if (cubeSide < 2) cout << "Из данного количества кубиков не получится собрать набор.\n";
