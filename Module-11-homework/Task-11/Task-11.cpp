@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-#include <cmath>
+#include <algorithm>
 
 int main()
 {
@@ -9,6 +9,6 @@ int main()
     cout << "Введите два числа: ";
     float number1, number2;
     cin >> number1 >> number2;
-    cout << "Наибольшее число: " << fmax(number1, number2) << endl;
+    cout << "Наибольшее число: " << max(number1, number2) << endl;
     return 0;
 }

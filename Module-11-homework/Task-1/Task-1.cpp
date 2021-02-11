@@ -19,7 +19,7 @@ int main()
         cout << "Ошибка! Значения должны быть положительными.\n";
     }
 
-    float acceleration = force / time, distance = (acceleration * pow(time, 2)) / 2;
+    float acceleration = force / mass, distance = (acceleration * pow(time, 2)) / 2;
     cout << "Расстояние: " << distance << " м.\n";
     return 0;
 }

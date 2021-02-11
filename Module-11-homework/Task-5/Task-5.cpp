@@ -1,5 +1,4 @@
 ﻿#include <iostream>
-#include <cmath>
 #include <iomanip>
 
 int main()
@@ -27,7 +26,7 @@ int main()
         if (currentDownload > downloadSize) currentDownload = downloadSize;
         float downloadPercent = 100.0f * currentDownload / downloadSize;
         cout << " Прошло " << setw(3) << timer << " сек. Скачано " << setw(5)
-            << currentDownload << " из " << downloadSize << " MB. (" << round(downloadPercent) << "%)\n";
+            << currentDownload << " из " << downloadSize << " MB. (" << static_cast<int>(downloadPercent) << "%)\n";
     }
     return 0;
 }
