@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <iomanip>
 
 int main()
 {
@@ -8,10 +9,10 @@ int main()
     bool correct = false;
     while (!correct)
     {
-        std::cout << "Input guess number: ";
+        std::cout << std::setw(21) << "Input guess four-digit number: ";
         std::cin >> guessNumber;
 
-        std::cout << "Input second number: ";
+        std::cout << std::setw(21) << "Input second four-digit number: ";
         std::cin >> secondNumber;
 
         if (guessNumber.length()!=4||secondNumber.length()!=4)
@@ -22,9 +23,9 @@ int main()
         
         for (int i = 0; i < 4; ++i)
         {
-            if (guessNumber[i] < '0' || secondNumber[i] < '0' || guessNumber[i]>'9' || secondNumber[i]>'9')
+            if (guessNumber[i] < '0' || secondNumber[i] < '0' || guessNumber[i] > '9' || secondNumber[i] > '9')
             {
-                std::cout << "Only four-digit numbers allowed. Try again.\n";
+                std::cout << "Only numbers are allowed. Try again.\n";
                 break;
             }
             else correct = true;
@@ -32,21 +33,31 @@ int main()
     }
 
     int bulls = 0, cows = 0;
-    std::string tmp;
     for (int i = 0; i < guessNumber.length(); ++i)
     {
-        if (guessNumber[i] == secondNumber[i]) // Убираем из строк "быков"
+        if (guessNumber[i] == secondNumber[i])
         {
             ++bulls;
-            guessNumber[i] = '*';
-            secondNumber[i] = '*';
+            guessNumber[i] = 'B';
+            secondNumber[i] = 'B';
         }
     }
+
     for (int i = 0; i < guessNumber.length(); ++i)
     {
-        for (int j = 0; j < secondNumber.length(); ++j)
+        if (guessNumber[i] == 'B') continue;
+        else
         {
-            if (guessNumber[i] == secondNumber[j] && guessNumber[i] != '*') ++cows;
+            for (int j = 0; j < secondNumber.length(); ++j)
+            {
+                if (guessNumber[i] == secondNumber[j])
+                {
+                    ++cows;
+                    guessNumber[i] = 'C';
+                    secondNumber[j] = 'C';
+                    break;
+                }
+            }
         }
     }
 
