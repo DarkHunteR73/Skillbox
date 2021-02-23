@@ -9,10 +9,10 @@ int main()
     bool correct = false;
     while (!correct)
     {
-        std::cout << std::setw(21) << "Input guess four-digit number: ";
+        std::cout << std::setw(32) << "Input guess four-digit number: ";
         std::cin >> guessNumber;
 
-        std::cout << std::setw(21) << "Input second four-digit number: ";
+        std::cout << std::setw(32) << "Input second four-digit number: ";
         std::cin >> secondNumber;
 
         if (guessNumber.length()!=4||secondNumber.length()!=4)
