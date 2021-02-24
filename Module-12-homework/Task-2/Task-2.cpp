@@ -33,34 +33,37 @@ int main()
     }
 
     int bulls = 0, cows = 0;
-    for (int i = 0; i < guessNumber.length(); ++i)
+    if (guessNumber == secondNumber) bulls = 4;
+    else
     {
-        if (guessNumber[i] == secondNumber[i])
+        for (int i = 0; i < guessNumber.length(); ++i)
         {
-            ++bulls;
-            guessNumber[i] = 'B';
-            secondNumber[i] = 'B';
-        }
-    }
-
-    for (int i = 0; i < guessNumber.length(); ++i)
-    {
-        if (guessNumber[i] == 'B') continue;
-        else
-        {
-            for (int j = 0; j < secondNumber.length(); ++j)
+            if (guessNumber[i] == secondNumber[i])
             {
-                if (guessNumber[i] == secondNumber[j])
+                ++bulls;
+                guessNumber[i] = 'B';
+                secondNumber[i] = 'B';
+            }
+        }
+
+        for (int i = 0; i < guessNumber.length(); ++i)
+        {
+            if (guessNumber[i] == 'B') continue;
+            else
+            {
+                for (int j = 0; j < secondNumber.length(); ++j)
                 {
-                    ++cows;
-                    guessNumber[i] = 'C';
-                    secondNumber[j] = 'C';
-                    break;
+                    if (guessNumber[i] == secondNumber[j])
+                    {
+                        ++cows;
+                        guessNumber[i] = 'C';
+                        secondNumber[j] = 'C';
+                        break;
+                    }
                 }
             }
         }
     }
-
     std::cout << "Bulls: " << bulls << ", cows: " << cows << ".\n";
     return 0;
 }
