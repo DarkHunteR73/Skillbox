@@ -21,7 +21,7 @@ int main()
             continue;
         }
         
-        for (int i = 0; i < 4; ++i)
+        for (size_t i = 0; i < 4; ++i)
         {
             if (guessNumber[i] < '0' || secondNumber[i] < '0' || guessNumber[i] > '9' || secondNumber[i] > '9')
             {
@@ -36,7 +36,7 @@ int main()
     if (guessNumber == secondNumber) bulls = 4;
     else
     {
-        for (int i = 0; i < guessNumber.length(); ++i)
+        for (size_t i = 0; i < guessNumber.length(); ++i)
         {
             if (guessNumber[i] == secondNumber[i])
             {
@@ -46,12 +46,12 @@ int main()
             }
         }
 
-        for (int i = 0; i < guessNumber.length(); ++i)
+        for (size_t i = 0; i < guessNumber.length(); ++i)
         {
             if (guessNumber[i] == 'B') continue;
             else
             {
-                for (int j = 0; j < secondNumber.length(); ++j)
+                for (size_t j = 0; j < secondNumber.length(); ++j)
                 {
                     if (guessNumber[i] == secondNumber[j])
                     {
