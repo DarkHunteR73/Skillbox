@@ -12,69 +12,52 @@ int main()
         std::cout << "Wrong input. Try again.\n";
     }
 
+    int thousands = number / 1000;
+    int hundreds = number % 1000 / 100;
+    int dozens = number % 100 / 10;
+    int ones = number % 10;
+
     std::string romanNumber = "";
 
-    while (number > 0)
+    for (size_t i = 0; i < thousands; ++i)
     {
-        if (number / 1000 >= 1) {
-            number -= 1000;
-            romanNumber += 'M';
-            continue;
-        }   
-        if (number / 900 >= 1) {
-            number -= 900;
-            romanNumber += "CM";
-        }
-        if (number / 500 >= 1) {
-            number -= 500;
-            romanNumber += 'D';
-        }
-        if (number / 400 >= 1) {
-            number -= 400;
-            romanNumber += "CD";
-        }
-        if (number / 100 >= 1) {
-            number -= 100;
+        romanNumber += 'M';
+    }
+
+    if (hundreds == 4 || hundreds == 9) romanNumber += 'C';
+    if (hundreds >= 4 && hundreds <= 8) romanNumber += 'D';
+    if (hundreds == 9) romanNumber += 'M';
+    if (hundreds % 5 < 4)
+    {
+        for (size_t i = 0; i < hundreds % 5; ++i)
+        {
             romanNumber += 'C';
-            continue;
-        }
-        if (number / 90 >= 1) {
-            number -= 90;
-            romanNumber += "XC";
-        }
-        if (number / 50 >= 1) {
-            number -= 50;
-            romanNumber += 'L';
-        }
-        if (number / 40 >= 1) {
-            number -= 40;
-            romanNumber += "XL";
-        }
-        if (number / 10 >= 1) {
-            number -= 10;
-            romanNumber += 'X';
-            continue;
-        }
-        if (number / 9 >= 1) {
-            number -= 9;
-            romanNumber += "IX";
-        }
-        if (number / 5 >= 1) {
-            number -= 5;
-            romanNumber += 'V';
-        }
-        if (number / 4 >= 1) {
-            number -= 4;
-            romanNumber += "IV";
-        }
-        if (number / 1 >= 1) {
-            number -= 1;
-            romanNumber += 'I';
-            continue;
         }
     }
+
+    if (dozens == 4 || dozens == 9) romanNumber += 'X';
+    if (dozens >= 4 && dozens <= 8) romanNumber += 'L';
+    if (dozens == 9) romanNumber += 'C';
+    if (dozens % 5 < 4)
+    {
+        for (size_t i = 0; i < dozens % 5; ++i)
+        {
+            romanNumber += 'X';
+        }
+    }
+
+    if (ones == 4 || ones == 9) romanNumber += 'I';
+    if (ones >= 4 && ones <= 8) romanNumber += 'V';
+    if (ones == 9) romanNumber += 'X';
+    if (ones % 5 < 4)
+    {
+        for (size_t i = 0; i < ones % 5; ++i)
+        {
+            romanNumber += 'I';
+        }
+    }
+
     std::cout << romanNumber << std::endl;
-    return 0;
 }
 /*
 5. Из обычных чисел — в римские
