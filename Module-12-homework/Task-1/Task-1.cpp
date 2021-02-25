@@ -56,11 +56,11 @@ int main()
 
             if (depTimeMinutes < arrTimeMinutes)
             {
-                travelTime = depTimeMinutes - arrTimeMinutes;
+                travelTime = arrTimeMinutes - depTimeMinutes;
             }
             else 
             {
-                travelTime = (1440 - depTimeMinutes) + arrTimeMinutes;
+                travelTime = 1440 - depTimeMinutes + arrTimeMinutes;
             }
             std::cout << "Travel time: " << travelTime / 60 << " hours " << travelTime % 60 << " minutes.\n";
             break;
