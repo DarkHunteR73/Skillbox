@@ -1,17 +1,17 @@
 ﻿#include <iostream>
 
-float abs(float x)
+float absolute(float x)
 {
     return x >= 0 ? x : -x;
 }
 
-float sin(float x)
+float sinus(float x)
 {
     float result = 0.0;
     float add = x;
     int count = 0;
 
-    while (abs(add) >= 1e-6)
+    while (absolute(add) >= 1e-6)
     {
         result += add;
         ++count;
@@ -22,5 +22,5 @@ float sin(float x)
 
 int main()
 {
-    std::cout << sin(3.1415);
+    std::cout << sinus(3.1415);
 }

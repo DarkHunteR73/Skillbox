@@ -7,7 +7,7 @@ void outputDigit(int digit, char first, char second, char third)
     if (digit == 9) std::cout << third;
     if (digit % 5 < 4)
     {
-        for (size_t i = 0; i < digit % 5; ++i) std::cout << first;
+        for (int i = 0; i < digit % 5; ++i) std::cout << first;
     }
 }
 

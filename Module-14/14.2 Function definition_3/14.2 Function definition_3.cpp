@@ -11,7 +11,7 @@ int main()
     std::cin >> str;
 
     bool correct = true;
-    for (size_t i = 0; i < str.length(); i++)
+    for (int i = 0; i < str.length(); i++)
     {
         if (!isDigit(str[i])) correct = false;
     }

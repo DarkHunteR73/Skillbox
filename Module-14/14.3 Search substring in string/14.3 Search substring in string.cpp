@@ -2,7 +2,7 @@
 
 bool isMatch(std::string text, std::string word, int pos)
 {
-    for (int i = 0; i < word.length(); i++)
+    for (int i = 0; i < word.length(); ++i)
     {
         if (i + pos >= text.length() || word[i] != text[i + pos]) return false;
     }
@@ -11,7 +11,7 @@ bool isMatch(std::string text, std::string word, int pos)
 
 int find(std::string text, std::string word)
 {
-    for (int startPos = 0; startPos + word.length() <= text.length(); startPos++)
+    for (int startPos = 0; startPos + word.length() <= text.length(); ++startPos)
     {
         if (isMatch(text, word, startPos)) return startPos;
     }
