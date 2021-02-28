@@ -8,11 +8,11 @@ std::string encryptCaesar(int shift, std::string text)
     {
         if (text[i] >= 'A' && text[i] <= 'Z')
         {
-            result += (text[i] + (shift % 26) - 65) % 26 + 65;
+            result += (text[i] + shift - 65) % 26 + 65;
         }
         else if (text[i] >= 'a' && text[i] <= 'z')
         {
-            result += (text[i] + (shift % 26) - 97) % 26 + 97;
+            result += (text[i] + shift - 97) % 26 + 97;
         }
         else result += text[i];
     }
@@ -32,6 +32,7 @@ int main()
     std::cout << "\nInput shift: ";
     int shift;
     std::cin >> shift;
+    shift %= 26;
 
     std::string encrypted = encryptCaesar(shift, text);
     std::cout << "\nCipher text: \n" << encrypted << '\n';
