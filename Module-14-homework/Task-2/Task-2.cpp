@@ -12,7 +12,7 @@ bool input_validator(std::string input) //Контроль ввода
 
 char gamefield_scan(std::string input)  //Считывание игрового поля
 {
-    int win_combinations = 0;
+    std::string win_combinations = "";
     char c = ' ';
 
     for (int i = 0; i < 3; ++i) //Вертикали
@@ -20,7 +20,7 @@ char gamefield_scan(std::string input)  //Считывание игрового 
         if (input[i] != '.' && input[i] == input[i + 3] && input[i] == input[i + 6])
         {
             c = input[i];
-            ++win_combinations;
+            win_combinations += c;
         }
     }
 
@@ -29,36 +29,38 @@ char gamefield_scan(std::string input)  //Считывание игрового 
         if (input[i] != '.' && input[i] == input[i + 1] && input[i] == input[i + 2])
         {
             c = input[i];
-            ++win_combinations;
+            win_combinations += c;
         }
     }
 
     if (input[0] != '.' && input[0] == input[4] && input[0] == input[8])    //Диагонали
     {
         c = input[0];
-        ++win_combinations;
+        win_combinations += c;
     }
 
     if (input[2] != '.' && input[2] == input[4] && input[2] == input[6])
     {
         c = input[2];
-        ++win_combinations;
+        win_combinations += c;
     }
-
-    if (win_combinations == 1)
-    {
-        return c;   //X или O
-    }
-    else if (win_combinations == 0)
+    ///////////////////////////////////////////////////////////////////////////////////////
+    if (win_combinations.length() == 0)
     {
         c = 'N';    //"Nobody"
-        return c;
     }
     else
     {
-        c = 'E';    //"Error"
-        return c;
+        for (int i = 0; i < win_combinations.length() && c != 'E'; ++i)
+        {
+            if (win_combinations[i] != c)
+            {
+                c = 'E';    //"Error"
+            }
+        }
     }
+    return c;
+    ///////////////////////////////////////////////////////////////////////////////////////
 }
 
 void game_result(std::string input)
