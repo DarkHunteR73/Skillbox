@@ -24,9 +24,10 @@ bool inputValidator(std::string adress) //Проверка корректнос�
 
 bool numValidator(std::string adress)
 {
+    int num = 0;
+
     for (int i = 0; i < adress.length(); ++i)
     {
-        int num = 0;
 
         if (adress[i] == '.' || i == adress.length() - 1)
         {
