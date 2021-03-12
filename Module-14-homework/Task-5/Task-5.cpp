@@ -39,7 +39,7 @@ int main()
 
     if (isCorrect(number1) && isCorrect(number2))
     {
-        double num1 = std::stof(number1), num2 = std::stof(number2);
+        double num1 = std::stod(number1), num2 = std::stod(number2);
         if (num1 > num2) std::cout << "More\n";
         else if (num1 < num2) std::cout << "Less\n";
         else std::cout << "Equal\n";
