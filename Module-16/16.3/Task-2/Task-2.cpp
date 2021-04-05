@@ -31,9 +31,10 @@ int main()
     std::cout << "Enter the number of requests: ";
     std::cin >> numberOfRequests;
 
-    int mode = 0, num = 0;
     for (int i = 0; i < numberOfRequests; )
     {
+        int mode, num;
+
         std::cout << "Enter your request " << i + 1 << ": ";
         std::cin >> mode >> num;
 
