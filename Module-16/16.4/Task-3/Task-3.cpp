@@ -18,8 +18,7 @@ int main()
 		{
 			line.resize(line.capacity() + 10);
 		}
-		line[realsize] = num;
-		++realsize;
+		line[realsize++] = num;
 	}
 }
 
