@@ -3,15 +3,11 @@
 
 void removeFromPosition(std::vector<int>& vec, int& index)
 {
-    if (index == vec.size() - 1) vec.resize(vec.size() - 1);
-    else
+    for (int i = index; i < vec.size() - 1; ++i)
     {
-        for (int i = index; i < vec.size() - 1; ++i)
-        {
-            vec[i] = vec[i + 1];
-        }
-        vec.resize(vec.size() - 1);
+        vec[i] = vec[i + 1];
     }
+    vec.pop_back();
 }
 
 int main()
