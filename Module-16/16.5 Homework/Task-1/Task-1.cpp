@@ -47,7 +47,7 @@ int main()
     }
 
     std::cin.clear();
-    std::cin.ignore(32764, '\n');
+    std::cin.ignore(32767, '\n');
     std::cin.get();
 }
 
