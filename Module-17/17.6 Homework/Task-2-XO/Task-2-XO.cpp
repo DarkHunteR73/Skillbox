@@ -34,6 +34,10 @@ bool isWin(char gamefieldArray[][3])
 
 		if (row == "XXX" || col == "XXX" || row == "OOO" || col == "OOO") return true;
 	}
+	// Диагонали
+		if (gamefieldArray[0][0]!=' ' && gamefieldArray[0][0] == gamefieldArray[1][1] && gamefieldArray[0][0] == gamefieldArray[2][2]) return true;
+		else if (gamefieldArray[0][2] != ' ' && gamefieldArray[0][2] == gamefieldArray[1][1] && gamefieldArray[0][2] == gamefieldArray[2][0]) return true;
+
 
 	return false;
 }
