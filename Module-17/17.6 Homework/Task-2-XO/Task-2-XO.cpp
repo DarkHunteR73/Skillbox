@@ -94,6 +94,10 @@ int main()
 		makeAMove(gamefield, (turnCount % 2 == 0 ? 2 : 1), turnCount, endGame);
 		++turnCount;
 	}
+
+	std::cin.clear();
+	std::cin.ignore(32767, '\n');
+	std::cin.get();
 }
 
 /*
