@@ -6,7 +6,7 @@ void pressEnter()
 {
 	std::cout << "\nPress 'Enter' to continue" << std::endl;
 	std::cin.clear();
-	std::cin.ignore(32767, '\n');
+	//std::cin.ignore(32767, '\n');
 	std::cin.get();
 	system("cls");
 }
