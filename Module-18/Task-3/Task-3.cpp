@@ -3,7 +3,7 @@
 
 int main()
 {
-    std::vector<int> vec;
+	std::vector<int> vec;
 
 	while (true)
 	{
@@ -21,7 +21,7 @@ int main()
 			{
 				for (int i = 0; i < vec.size(); ++i)
 				{
-					for (int j = 0; j < vec.size() - i- 1; ++j)
+					for (int j = 0; j < vec.size() - i - 1; ++j)
 					{
 						if (vec[j] > vec[j + 1])
 						{
