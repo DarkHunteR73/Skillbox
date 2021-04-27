@@ -1,20 +1,37 @@
 ﻿#include <iostream>
+#include <vector>
 
 int main()
 {
-    bool tiny[]{ true };
-    bool small[]{ true,true };
-    bool medium[]{ true,true,true };
-    bool big[]{ true,true,true,true };
+	std::vector<int> vec{ -2,1,-3,4,-1,2,1,-5,4 };
 
-    std::cout << "Tiny ship size: " << sizeof(tiny) << std::endl;
-    std::cout << "Small ship size: " << sizeof(small) << std::endl;
-    std::cout << "Medium ship size: " << sizeof(medium) << std::endl;
-    std::cout << "Big ship size: " << sizeof(big) << std::endl;
+	int index_begin = 0, index_end = 0, max_res = 0;
+
+	for (int i = 0; i < vec.size(); ++i)
+	{
+		int res = 0;
+		for (int j = i; j < vec.size(); ++j)
+		{
+			res += vec[j];
+			if (res > max_res)
+			{
+				max_res = res;
+				index_begin = i;
+				index_end = j;
+			}
+		}
+	}
+
+	std::cout << index_begin << ' ' << index_end << std::endl;
 }
-/*
-Задача 1. Корабли в “морском бое”
 
-Требуется объявить массивы для игры в морской бой и вывести их размеры в консоль, не используя констант с размерами. Всего таких типов 4: крошечный, малый, 
-средний и большой. Для простоты, типом элементов корабля могут быть обычные bool (размер 1 байт).
-*/
+//Задача 1
+//
+//Вам даётся массив целых чисел.Необходимо найти такие два индекса i и j в этом массиве, что сумма a[i], a[i + 1], a[i + 2], … a[j] будет максимально
+//возможной и вывести их.
+//
+//Пример:
+//
+//a = { -2,1,-3,4,-1,2,1,-5,4 }
+//
+//Тогда наибольшая сумма последовательных элементов находится между индексами 3 и 6 : {4, -1, 2, 1}, сумма = 6. Необходимо вывести 3 и 6

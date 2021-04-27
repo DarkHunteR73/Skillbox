@@ -1,34 +1,64 @@
 ﻿#include <iostream>
+#include <vector>
 
 int main()
 {
-    std::cout << "How many people live in the building? ";
-    int totalResidents;
-    std::cin >> totalResidents;
+	std::vector<int> vec;
 
-    int floors[5]{};
-    int currentResidents = 0;
-    for (int i = 0; i < 5; ++i)
-    {
-        std::cout << "How many people are on the " << i + 1 << " floor now? ";
-        std::cin >> floors[i];
-        currentResidents += floors[i];
-    }
+	while (true)
+	{
+		std::cout << "Input number:";
+		int num = 0;
+		std::cin >> num;
 
-    if (currentResidents > totalResidents)
-    {
-        std::cout << "\nAttention! Current number of residents is more than registered.\n"
-            << "Possible presence of strangers!\n";
-    }
-    else
-    {
-        float isolation = currentResidents * 100.0f / totalResidents;
-        std::cout << "\nLevel of isolation is: " << isolation << "%\n";
-    }
+		if (num == -1)
+		{
+			if (vec.size() < 5)
+			{
+				std::cerr << "Error! You need to enter at least five numbers" << std::endl;
+			}
+			else
+			{
+				for (int i = 0; i < vec.size(); ++i)
+				{
+					for (int j = 0; j < vec.size() - i - 1; ++j)
+					{
+						if (vec[j] > vec[j + 1])
+						{
+							std::swap(vec[j], vec[j + 1]);
+						}
+					}
+				}
+
+				std::cout << vec[4] << std::endl;
+			}
+		}
+		else if (num == -2)
+		{
+			return 0;
+		}
+		else
+		{
+			vec.push_back(num);
+		}
+	}
 }
 
-//Задача 3. Уровень самоизоляции
+//Задача 3
 //
-//В одной отдельно взятой пятиэтажке проживает N зарегистрированных жильцов - данное число требуется ввести с самого начала программы.На каждом из этажей сейчас
-//находится Ni людей.Это число также требуется ввести вначале.Используя все эти данные требуется вычислить общий уровень самоизоляции в доме, как процентное отношение
-//общего числа людей, которые сейчас находятся на этажах к общему количеству жильцов, зарегистрированных в нём.Для этого можно использовать формулу : (сумма Ni * 100) / N
+//С клавиатуры вводятся числа.Когда пользователь вводит - 1 --необходимо выводить на экран пятое по возрастанию число среди введённых.
+//Когда пользователь вводит - 2 --программа завершает работу.
+//
+//Пример:
+//
+//ввод: 7 5 3 1 2 4 6 - 1
+//
+//вывод : 5 (в отсортированном виде массив выглядит так : {1, 2, 3, 4, 5, 6, 7})
+//
+//ввод : 1 1 1 - 1
+//
+//вывод : 2 (в отсортированном виде массив выглядит так : {1, 1, 1, 1, 2, 3, 4, 5, 6, 7})
+//
+//ввод - 2
+//
+//завершение программы
