@@ -1,16 +1,34 @@
 ﻿#include <iostream>
 #include <string>
 
+bool isCorrect(std::string str)
+{
+	for (int i = 0; i < str.length(); ++i)
+	{
+		if (str[i] < '0' || str[i] > '9')
+		{
+			std::cerr << "Wrong input! Try again." << std::endl;
+			return false;
+		}
+	}
+	return true;
+}
+
 int main()
 {
-    std::cout << "Input integer and fractional part: ";
-    int intPart, fracPart;
-    std::cin >> intPart >> fracPart;
+	int intPart;
+	std::string fracPart;
 
-    std::string tmp = std::to_string(intPart) + '.' + std::to_string(fracPart);
+	do
+	{
+		std::cout << "Input integer and fractional part: ";
+		std::cin >> intPart >> fracPart;
+	} while (!isCorrect(fracPart));
 
-    double result = std::stod(tmp);
-    std::cout << "The result is: " << result << std::endl;
+	std::string tmp = std::to_string(intPart) + '.' + fracPart;
+
+	double result = std::stod(tmp);
+	std::cout << "The result is: " << result << std::endl;
 }
 
 //Сшиватель дробных чисел
