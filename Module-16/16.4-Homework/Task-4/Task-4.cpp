@@ -48,6 +48,7 @@ void playMelody(std::string& str)
 		}
 		case FA: {
 			std::cout << "Fa ";
+			break;
 		}
 		case SOL: {
 			std::cout << "Sol ";
