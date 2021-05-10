@@ -3,9 +3,18 @@
 
 bool isCorrect(std::string str)
 {
+	bool dot = false;
 	for (int i = 0; i < str.length(); ++i)
 	{
-		if (str[i] < '0' || str[i] > '9')
+		if (i == 0 && str[i] == '-')
+		{
+			continue;
+		}
+		else if (!dot && str[i] == '.')
+		{
+			dot = true;
+		}
+		else if (str[i] < '0' || str[i] > '9')
 		{
 			std::cerr << "Wrong input! Try again." << std::endl;
 			return false;
@@ -16,16 +25,14 @@ bool isCorrect(std::string str)
 
 int main()
 {
-	int intPart;
-	std::string fracPart;
+	std::string intPart, fracPart, tmp;
 
 	do
 	{
 		std::cout << "Input integer and fractional part: ";
 		std::cin >> intPart >> fracPart;
-	} while (!isCorrect(fracPart));
-
-	std::string tmp = std::to_string(intPart) + '.' + fracPart;
+		tmp = intPart + '.' + fracPart;
+	} while (!isCorrect(tmp));
 
 	double result = std::stod(tmp);
 	std::cout << "The result is: " << result << std::endl;
