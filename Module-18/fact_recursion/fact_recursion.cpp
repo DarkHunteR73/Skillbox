@@ -14,5 +14,5 @@ int main()
 		std::cout << i << '\t' << fact(i) << std::endl;
 	}
 
-	std::cout << "\nMAX" << '\t' << UINT64_MAX << std::endl;
+	std::cout << "\nMAX\t" << UINT64_MAX << std::endl;
 }
