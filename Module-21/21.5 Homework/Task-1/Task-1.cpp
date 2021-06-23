@@ -9,7 +9,7 @@ struct InputForm
     std::string firstName;
     std::string lastName;
     std::string date;
-    int salary;
+    int salary = 0;
 };
 
 bool checkDate(std::string date);
