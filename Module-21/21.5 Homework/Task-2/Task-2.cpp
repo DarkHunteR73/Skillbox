@@ -2,15 +2,6 @@
 #include <vector>
 #include <conio.h>
 
-//Функция для получения целого числа в заданном диапазоне
-int getIntNumber(int, int);
-
-//Функция для получения ответа "Да/Нет"
-bool getAnswer();
-
-//Функция для заполнения экземпляра структуры
-void fillStruct(Sector&);
-
 enum BuildingType
 {
     LIVING_HOUSE = 1,
@@ -30,13 +21,15 @@ enum RoomType
 
 struct Room
 {
-    int area = 0;
+    int roomType = 0;
+    double area = 0;
 };
 
 struct Floor
 {
+    bool exist = false;
     int countOfRooms = 0;
-    double height;
+    double height = 0;
     Room rooms[4];
 };
 
@@ -44,31 +37,31 @@ struct LivingHouse
 {
     int countOfFloors = 1;
     bool chimney = false;
-    Floor floors[3];
+    Floor floor[3];
 };
 
 struct Garage
 {
     bool exist = false;
-    int area = 0;
+    double area = 0;
 };
 
 struct Barn
 {
     bool exist = false;
-    int area = 0;
+    double area = 0;
 };
 
 struct Bathhouse
 {
     bool exist = false;
-    int area = 0;
+    double area = 0;
     bool chimney = false;
 };
 
 struct Sector
 {
-    int id;
+    unsigned int id;
 
     LivingHouse livingHouse;
     Garage garage;
@@ -76,22 +69,39 @@ struct Sector
     Bathhouse bathhouse;
 };
 
+//Функция для получения числа в заданном диапазоне
+template <class T> T getNumber(T, T);
+
+//Функция для получения ответа "Да/Нет"
+bool getAnswer();
+
+//Функция для заполнения экземпляра структуры
+void fillStruct(Sector&);
+
+bool checkID(std::vector<Sector>& sector, int count);
+
 int main()
 {
     std::cout << "Please input number of sectors: ";
     int numOfSectors;
     std::cin >> numOfSectors;
-    std::vector<Sector> sectors(numOfSectors);
+    std::vector<Sector> sector(numOfSectors);
 
-    for (int i = 0; i < sectors.size(); ++i)
+    for (int i = 0; i < sector.size(); ++i)
     {
-        fillStruct(sectors[i]);
+        do
+        {
+            std::cout << "Please enter a unique sector number: ";
+            sector[i].id = getNumber(1u, UINT32_MAX);
+        } while (!checkID(sector, i));
+
+        fillStruct(sector[i]);
     }
 }
 
-int getIntNumber(int rangeMin, int rangeMax)
+template <class T> T getNumber(T rangeMin, T rangeMax)
 {
-    int num;
+    T num;
 
     while (true)
     {
@@ -103,7 +113,7 @@ int getIntNumber(int rangeMin, int rangeMax)
         }
         else
         {
-            std::cerr << "Invalid number! Please try again: ";
+            std::cerr << "Out of range! Input number between " << rangeMin << " and " << rangeMax << ": ";
         }
     }
 }
@@ -123,6 +133,22 @@ bool getAnswer()
     }
 
     return false;
+}
+
+bool checkID(std::vector<Sector>& sector, int count)
+{
+    if (count == 0) return true;
+
+    for (int i = count - 1; i <= 0; --i)
+    {        
+        if (sector[count].id == sector[i].id)
+        {
+            std::cerr << "Match found! Please try again." << std::endl;
+            return false;
+        }
+    }
+
+    return true;
 }
 
 void fillStruct(Sector& sector)
