@@ -27,7 +27,6 @@ struct Room
 
 struct Floor
 {
-    bool exist = false;
     int countOfRooms = 0;
     double height = 0;
     Room rooms[4];
@@ -61,7 +60,7 @@ struct Bathhouse
 
 struct Sector
 {
-    unsigned int id;
+    int id = 0;
 
     LivingHouse livingHouse;
     Garage garage;
@@ -78,7 +77,11 @@ bool getAnswer();
 //Функция для заполнения экземпляра структуры
 void fillStruct(Sector&);
 
+//Функция для поиска совпадений в номерах участков
 bool checkID(std::vector<Sector>& sector, int count);
+
+//Линия-разделитель
+void splitter(char);
 
 int main()
 {
@@ -89,10 +92,14 @@ int main()
 
     for (int i = 0; i < sector.size(); ++i)
     {
+        splitter('#');
+
+        std::cout << "Sector " << i + 1 << ':' << std::endl;
+        
         do
         {
             std::cout << "Please enter a unique sector number: ";
-            sector[i].id = getNumber(1u, UINT32_MAX);
+            sector[i].id = getNumber(1, INT32_MAX);
         } while (!checkID(sector, i));
 
         fillStruct(sector[i]);
@@ -139,9 +146,9 @@ bool checkID(std::vector<Sector>& sector, int count)
 {
     if (count == 0) return true;
 
-    for (int i = count - 1; i <= 0; --i)
+    for (int i = 0; i < count; ++i)
     {        
-        if (sector[count].id == sector[i].id)
+        if (sector[count].id == sector[count - i - 1].id)
         {
             std::cerr << "Match found! Please try again." << std::endl;
             return false;
@@ -151,9 +158,71 @@ bool checkID(std::vector<Sector>& sector, int count)
     return true;
 }
 
+void splitter(char ch)
+{
+    for (int  i = 0; i < 50; ++i)
+    {
+        std::cout << ch;
+    }
+
+    std::cout << std::endl;
+}
+
 void fillStruct(Sector& sector)
 {
+    //Опрос по постройкам
+    std::cout << "Buildings:" << std::endl;
+    std::cout << "Is there a garage on this lot? (y/n):";
+    sector.garage.exist = getAnswer();
 
+    std::cout << "\nIs there a barn on this lot? (y/n):";
+    sector.barn.exist = getAnswer();
+
+    std::cout << "\nIs there a bathhouse on this lot? (y/n):";
+    sector.bathhouse.exist = getAnswer();
+    std::cout << std::endl;
+
+    splitter('-');
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Детализация жилого дома
+    std::cout << "Living house:" << std::endl;
+    std::cout << "Does the house have a stove with a chimney? (y/n):";
+    sector.livingHouse.chimney = getAnswer();
+
+    std::cout << "\nNumber of floors (1-3): ";
+    sector.livingHouse.countOfFloors = getNumber(1, 3);
+
+    for (int i = 0; i < sector.livingHouse.countOfFloors; ++i)
+    {
+        splitter('-');
+
+        //Детализация этажа
+        std::cout << "Floor " << i + 1 << ':' << std::endl;
+        std::cout << "Ceiling height: ";
+        sector.livingHouse.floor[i].height = getNumber(2.0, 15.0);
+        std::cout << "Number of rooms (2-4): ";
+        sector.livingHouse.floor[i].countOfRooms = getNumber(2, 4);
+
+        //Детализация комнат на этаже
+        for (int j = 0; j < sector.livingHouse.floor[i].countOfRooms; ++j)
+        {
+            splitter('-');
+
+            std::cout << "Room " << j + 1 << ':' << std::endl;
+            std::cout << "1. Bedroom" << std::endl;
+            std::cout << "2. Kitchen" << std::endl;
+            std::cout << "3. Bathroom" << std::endl;
+            std::cout << "4. Children room" << std::endl;
+            std::cout << "5. Living room" << std::endl;
+            std::cout << "\nSelect room type: ";
+            sector.livingHouse.floor[i].rooms[j].roomType = getNumber(1, 5);
+
+            std::cout << "Room area: ";
+            sector.livingHouse.floor[i].rooms[j].area = getNumber(1.0, 100.0);
+        }
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
 
 /*
