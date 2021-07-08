@@ -192,12 +192,12 @@ void fillStruct(Sector& sector)
 
     std::cout << "\nNumber of floors (1-3): ";
     sector.livingHouse.countOfFloors = getNumber(1, 3);
-
+    
+    //Детализация по этажам
     for (int i = 0; i < sector.livingHouse.countOfFloors; ++i)
     {
         splitter('-');
-
-        //Детализация этажа
+        
         std::cout << "Floor " << i + 1 << ':' << std::endl;
         std::cout << "Ceiling height: ";
         sector.livingHouse.floor[i].height = getNumber(2.0, 15.0);
@@ -219,10 +219,42 @@ void fillStruct(Sector& sector)
             sector.livingHouse.floor[i].rooms[j].roomType = getNumber(1, 5);
 
             std::cout << "Room area: ";
-            sector.livingHouse.floor[i].rooms[j].area = getNumber(1.0, 100.0);
+            sector.livingHouse.floor[i].rooms[j].area = getNumber(1.0, DBL_MAX);
         }
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //Гараж
+    if (sector.garage.exist)
+    {
+        splitter('-');
+
+        std::cout << "Garage" << std::endl;
+        std::cout << "Garage area: ";
+        sector.garage.area = getNumber(4.0, DBL_MAX);
+    }
+
+    //Сарай
+    if (sector.barn.exist)
+    {
+        splitter('-');
+
+        std::cout << "Barn" << std::endl;
+        std::cout << "Barn area: ";
+        sector.barn.area = getNumber(4.0, DBL_MAX);
+    }
+
+    //Баня
+    if (sector.bathhouse.exist)
+    {
+        splitter('-');
+
+        std::cout << "Bathhouse" << std::endl;
+        std::cout << "Does the bathhouse have a stove with a chimney? (y/n):";
+        sector.bathhouse.chimney = getAnswer();
+        std::cout << "Bathhouse area: ";
+        sector.bathhouse.area = getNumber(4.0, DBL_MAX);
+    }
 }
 
 /*
