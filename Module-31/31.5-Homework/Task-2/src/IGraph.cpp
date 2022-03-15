@@ -1,19 +1,20 @@
 #include "IGraph.h"
 
-//------------------------------------------------------------------------------------
 MatrixGraph::MatrixGraph(int countOfVertices) 
-	:adjMatrix(countOfVertices, std::vector<bool>(countOfVertices, false)) {}
+	:IGraph(MATRIX), 
+	adjMatrix(countOfVertices, std::vector<bool>(countOfVertices, false)) {}
 
-MatrixGraph::MatrixGraph(const MatrixGraph* _oth) 
-	:adjMatrix(_oth->adjMatrix) {}
-
-MatrixGraph::MatrixGraph(const ListGraph* _oth) 
+MatrixGraph::MatrixGraph(IGraph* _oth) 
 	:MatrixGraph(_oth->VerticesCount()) {
-	const auto tmp(_oth->GetGraph());
-	
-	for (int i = 0; i < adjMatrix.size(); ++i) {
-		for (int j = 0; j < tmp[i].size(); ++j) {
-			adjMatrix[i][tmp[i][j]] = true;
+	if (_oth->getType() == MATRIX) {
+		adjMatrix = static_cast<MatrixGraph*>(_oth)->adjMatrix;
+	} else {
+		const auto tmp(static_cast<ListGraph*>(_oth)->GetGraph());
+
+		for (int i = 0; i < adjMatrix.size(); ++i) {
+			for (int j = 0; j < tmp[i].size(); ++j) {
+				adjMatrix[i][tmp[i][j]] = true;
+			}
 		}
 	}
 }
@@ -47,20 +48,21 @@ void MatrixGraph::GetPrevVertices(int vertex, std::vector<int>& vertices) const 
 
 const std::vector<std::vector<bool>>& MatrixGraph::GetGraph() const { return adjMatrix; }
 
-//------------------------------------------------------------------------------------
 ListGraph::ListGraph(int countOfVertices) 
-	:adjList(countOfVertices) {}
+	:IGraph(LIST),
+	adjList(countOfVertices) {}
 
-ListGraph::ListGraph(const ListGraph* _oth) 
-	:adjList(_oth->adjList) {}
-
-ListGraph::ListGraph(const MatrixGraph* _oth) 
+ListGraph::ListGraph(IGraph* _oth) 
 	:ListGraph(_oth->VerticesCount()) {
-	const auto tmp(_oth->GetGraph());
+	if (_oth->getType() == LIST) {
+		adjList = static_cast<ListGraph*>(_oth)->adjList;
+	} else {
+		const auto tmp(static_cast<MatrixGraph*>(_oth)->GetGraph());
 
-	for (int i = 0; i < adjList.size(); ++i) {
-		for (int j = 0; j < tmp[i].size(); ++j) {
-			if (tmp[i][j]) adjList[i].push_back(j);
+		for (int i = 0; i < adjList.size(); ++i) {
+			for (int j = 0; j < tmp[i].size(); ++j) {
+				if (tmp[i][j]) adjList[i].push_back(j);
+			}
 		}
 	}
 }
@@ -105,3 +107,7 @@ void ListGraph::GetPrevVertices(int vertex, std::vector<int>& vertices) const {
 }
 
 const std::vector<std::vector<int>>& ListGraph::GetGraph() const { return adjList; }
+
+IGraph::IGraph(Type _type) :adjtype(_type) {}
+
+Type IGraph::getType() { return adjtype; }

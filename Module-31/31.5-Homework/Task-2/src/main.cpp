@@ -11,8 +11,11 @@ int main() {
 	lg.AddEdge(2, 5);
 	lg.AddEdge(3, 4);
 	lg.AddEdge(4, 5);
-	ListGraph lll = lg;
+
 	MatrixGraph mg(&lg);
+	MatrixGraph mmg(&mg);
+	ListGraph lll(&mg);
+	ListGraph ttt(&lll);
 
 	std::vector<int> result;
 	lg.GetPrevVertices(3, result);
