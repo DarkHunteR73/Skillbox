@@ -7,10 +7,12 @@
 int main() {
     Record record;
     std::ofstream file("film-record.json");
+    file.clear();
     nlohmann::json jsonObj;
     record.makeJson(jsonObj);
 
     file << jsonObj;
+    file.close();
 }
 
 //  Задача 1. Информация о фильме с кинопортала
