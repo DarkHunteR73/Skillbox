@@ -12,12 +12,20 @@ int main() {
 	std::ifstream file(path);
 	if (file.is_open()) {
 		file >> json;
+		file.close();
 	} else {
 		std::cout << "Database is not found" << std::endl;
 		return EXIT_FAILURE;
 	}
 	
 	MovieBase movieBase(json);
+	std::cout << "Loaded " << movieBase.size() << " records." << std::endl;
+
+	std::cout << "Enter actor's name: ";
+	std::string request;
+	std::getline(std::cin, request);
+
+	movieBase.search(request);
 }
 
 //	Задача 2. Анализ данных о фильмах

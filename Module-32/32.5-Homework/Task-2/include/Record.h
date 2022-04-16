@@ -1,13 +1,12 @@
 #pragma once
 
 #include <iostream>
-#include <limits>
 #include <map>
 #include <string>
 #include <vector>
 #include "nlohmann/json.hpp"
 
-class Record {
+struct Record {
 	std::string title;
 	uint32_t releaseYear;
 	std::vector<std::string> country;
@@ -21,10 +20,6 @@ class Record {
 	uint32_t budget;
 	int64_t boxOffice;
 	std::map<std::string, std::string> cast;
-public:
-	Record();
+
 	Record(const nlohmann::json& json);
-	void makeJson(nlohmann::json& json);
-private:
-	void arrayFilling(std::vector<std::string>& vec);
 };

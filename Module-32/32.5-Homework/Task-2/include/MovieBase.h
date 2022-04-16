@@ -5,5 +5,7 @@
 class MovieBase {
 	std::map<std::string, Record> base;
 public:
-	MovieBase(nlohmann::json& json);
+	MovieBase(const nlohmann::json& json);
+	size_t size();
+	void search(const std::string& request);
 };

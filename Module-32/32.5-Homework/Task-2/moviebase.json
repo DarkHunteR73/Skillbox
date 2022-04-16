@@ -1,0 +1,192 @@
+{
+  "Movie": {
+    "Forrest Gump": {
+      "Box office": 678200000,
+      "Budget": 55000000,
+      "Cast": {
+        "Dick Cavett": "himself",
+        "Gary Sinise": "Lieutenant Dan Taylor",
+        "Geoffrey Blake": "Wesley",
+        "Grand L. Bush": "Conor Kenelly",
+        "Haley Joel Osment": "Forrest Gump Jr.",
+        "Hanna R. Hall": "young Jenny Curran",
+        "Michael Conner Humphreys": "young Forrest Gump",
+        "Michael Jace": "Teddy Lane Jr.",
+        "Mykelti Williamson": "Benjamin Buford \"Bubba\" Blue",
+        "Peter Dobson": "Elvis",
+        "Richard D'Alessandro": "Abbie Hoffman",
+        "Robin Wright": "Jenny Curran",
+        "Sally Field": "Mrs. Gump",
+        "Sam Anderson": "Principal Hancock",
+        "Siobhan Fallon Hogan": "Dorothy Harris",
+        "Sonny Shroyer": "Coach Paul \"Bear\" Bryant",
+        "Tom Hanks": "Forrest Gump"
+      },
+      "Country": [ "USA" ],
+      "Director": [ "Robert Zemeckis" ],
+      "Distribution company": [ "Paramonunt Pictures" ],
+      "Duration": 142,
+      "Music by": [ "Alan Silvestri" ],
+      "Producer": [ "Wendy Finerman", "Steve Tisch", "Steve Starkey" ],
+      "Production company": [ "The Tisch Company" ],
+      "Title": "Forrest Gump",
+      "Written by": [ "Eric Roth", "Winston Groom" ],
+      "Year of release": 1994
+    },
+    "Green Mile": {
+      "Box office": 286000000,
+      "Budget": 60000000,
+      "Cast": {
+        "Bailey Drucker": "Cora Detterick",
+        "Barry Peppper": "Dean Stanton",
+        "Bill Graton": "Earl the Plumber",
+        "Bonnie Hunt": "Jan Edgecomb",
+        "Brent Briscoe": "Bill Dodge",
+        "Dabbs Greer": "older Paul Edgecomb",
+        "David Morse": "Brutus \"Brutal\" Howell",
+        "Doug Hutchison": "Percy Wetmore",
+        "Evanne Drucker": "Kathe Detterick",
+        "Eve Brent": "Elanie Connelly",
+        "Gary Sinise": "Burt Hammersmith",
+        "Graham Greene": "Arlen Bitterbuck",
+        "Harry Dean Stanton": "Toot-Toot",
+        "James Cromwell": "Hal Moores",
+        "Jeffrey DeMunn": "Harry Terwillinger",
+        "Michael Clarke Duncan": "John Coffey",
+        "Michael Jeter": "Eduard \"Del\" Delacroix",
+        "Patricia Clarkson": "Melinda Moores",
+        "Paula Malcomson": "Majorie Detterick",
+        "Sam Rockwell": "William \"Will Bill\" Wharton",
+        "Tom Hanks": "Paul Edgecomb",
+        "William Sadler": "Klaus Detterick"
+      },
+      "Country": [
+        "USA"
+      ],
+      "Director": [
+        "Frank Darabont"
+      ],
+      "Distribution company": [
+        "Warner Bros.",
+        "Universal Pictures",
+        "United International Pictures"
+      ],
+      "Duration": 189,
+      "Music by": [
+        "Thomas Newman"
+      ],
+      "Producer": [
+        "Frank Darabont",
+        "David Valdes"
+      ],
+      "Production company": [
+        "Castle Rock Entertainment",
+        "Darkwoods Productions"
+      ],
+      "Title": "Green Mile",
+      "Written by": [
+        "Frank Darabont",
+        "Stephen King"
+      ],
+      "Year of release": 1999
+    },
+    "Interstellar": {
+      "Box office": 701800000,
+      "Budget": 165000000,
+      "Cast": {
+        "Anne Hathaway": "Dr. Amelia Brand",
+        "Bill Irwin": "TARS(voice and puppetry) and CASE(puppetry)",
+        "Casey Affleck": "Tom Cooper",
+        "Collette Wolfe": "Ms. Hanley",
+        "David Gyasi": "Romilly",
+        "David Oyelowo": "School Principal",
+        "Ellen Burstyn": "old Murph",
+        "Elyes Gabel": "Administrator",
+        "Jeff Hephner": "Doctor",
+        "Jessica Chastain": "Murphy \"Murph\" Cooper",
+        "John Lithgow": "Donald",
+        "Josh Stewart": "CASE(voice)",
+        "Leah Cairns": "Lois",
+        "Mackenzie Foy": "young Murph",
+        "Matt Damon": "Mann",
+        "Matthew McConaughey": "Joseph Cooper",
+        "Michael Caine": "Professor John Brand",
+        "Timothee Chalamet": "young Tom",
+        "Topher Grace": "Getty",
+        "Wes Bentley": "Doyle",
+        "William Devane": "Williams"
+      },
+      "Country": [ "UK", "USA" ],
+      "Director": [ "Christopher Nolan" ],
+      "Distribution company": [ "Paramount Pictures", "Warner Bros. Pictures" ],
+      "Duration": 169,
+      "Music by": [ "Hans Zimmer" ],
+      "Producer": [ "Emma Thomas", "Christopher Nolan", "Lynda Obst" ],
+      "Production company": [ "Paramount Pictures", "Warner Bros. Pictures", "Legendary Pictures", "Syncopy", "Lynda Obst Productions" ],
+      "Title": "Interstellar",
+      "Written by": [ "Jonathan Nolan", "Christopher Nolan" ],
+      "Year of release": 2014
+    },
+    "The Dark Knight": {
+      "Box office": 1005000000,
+      "Budget": 185000000,
+      "Cast": {
+        "Aaron Eckhart": "Harvey Dent / Two-Face",
+        "Christian Bale": "Bruce Wayne / Batman",
+        "Gary Oldman": "James Gordon",
+        "Heath Ledger": "Joker",
+        "Maggie Gyllenhaal": "Rachel Dawes",
+        "Michael Caine": "Alfred Pennyworth",
+        "Morgan Freeman": "Lucius Fox"
+      },
+      "Country": [ "USA", "UK" ],
+      "Director": [ "Christopher Nolan" ],
+      "Distribution company": [ "Warner Bros. Pictures" ],
+      "Duration": 152,
+      "Music by": [ "Hanz Zimmer", "James Newton Howard" ],
+      "Producer": [ "Emma Thomas", "Charles Roven", "Christopher Nolan" ],
+      "Production company": [ "Warner Bros. Pictures", "Legendary Pictures", "DC Comics", "Syncopy" ],
+      "Title": "The Dark Knight",
+      "Written by": [ "Jonathan Nolan", "Christopher Nolan", "David S. Goyer" ],
+      "Year of release": 2008
+    },
+    "The Lord of the Rings: The Fellowship of the Ring": {
+      "Box office": 897700000,
+      "Budget": 93000000,
+      "Cast": {
+        "Andy Serkis": "Gollum",
+        "Billy Boyd": "Peregrin \"Pippin\" Took",
+        "Cate Blanchett": "Galadriel",
+        "Christofer Lee": "Saruman the White",
+        "Craig Parker": "Haldir",
+        "Dominic Monaghan": "Meriadoc \"Merry\" Brandybuck",
+        "Elijah Wood": "Frodo Baggins",
+        "Harry Sinclair": "Isildur",
+        "Hugo Weaving": "Elrond",
+        "Ian Holm": "Bilbo Baggins",
+        "Ian McKellen": "Gandalf the Grey",
+        "John Rhys-Davies": "Gimli",
+        "Lawrence Makoare": "Lurtz",
+        "Liv Tyler": "Arwen Undomiel",
+        "Mark Ferguson": "Erenion Gil-galad",
+        "Marton Csokas": "Celeborn the Wise",
+        "Orlando Bloom": "Legolas Greenleaf",
+        "Peter McKenzie": "Elendil the Tall",
+        "Sala Baker": "Sauron the Deceiver",
+        "Sean Astin": "Samwise Gamgee",
+        "Sean Bean": "Boromir",
+        "Viggo Mortensen": "Aragorn \"Strider\" Elessar II"
+      },
+      "Country": [ "New Zealand", "USA" ],
+      "Director": [ "Peter Jackson" ],
+      "Distribution company": [ "New Line Cinema" ],
+      "Duration": 178,
+      "Music by": [ "Howard Shore" ],
+      "Producer": [ "Barrie M. Osborne", "Peter Jackson", "Fran Walsh", "Tim Sanders" ],
+      "Production company": [ "New Line Cinema", "WingNut Films" ],
+      "Title": "The Lord of the Rings: The Fellowship of the Ring",
+      "Written by": [ "Fran Walsh", "Philippa Boyens", "Peter Jackson" ],
+      "Year of release": 2001
+    }
+  }
+}
