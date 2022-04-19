@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+message card {
+	required int32 year_of_foundation = 1;
+	required string legal_adress = 2;
+	required string title = 3;
+	optional string occupation = 4;
+	optional bool foreign_economic_activity = 5;
+}
