@@ -2,17 +2,20 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <exception>
 
 #include "Catch.h"
 
 const size_t fieldSize{ 9 };
+std::vector<Catch*> field(fieldSize, nullptr);
+
+void castAFishingRod();
 
 int main() {
 	std::cout << "Gamefield size: " << fieldSize << std::endl;
 	std::srand(std::time(nullptr));
 
 	// Gamegield creation
-	std::vector<Catch*> field(fieldSize, nullptr);
 
 	field[std::rand() % fieldSize] = new Fish;
 
@@ -28,29 +31,37 @@ int main() {
 
 	// Game process
 	bool endGame{ false };
-	size_t attemptCounter{ 1 };
+	uint32_t attemptCounter{ 1 };
 
 	while (!endGame) {
-		std::cout << "Enter the casting sector: ";
-		int32_t input;
-		std::cin >> input;
-
-		if (field[input]) {
-			try {
-				field[input]->get();
-			} catch (const Fish&) {
-				std::cout << "You caught fish! Congratulations!\nNumber of attempts: "
-					<< attemptCounter << std::endl;
-				endGame = true;
-			} catch (const Boot&) {
-				std::cout << "You caught boot! You lose." << std::endl;
-				endGame = true;
-			}
-		} else {
-			std::cout << "Nothing. Try again." << std::endl;
+		try {
+			castAFishingRod();
+		} catch (const Fish&) {
+			std::cout << "You caught fish! Congratulations!\nNumber of attempts: "
+				<< attemptCounter << std::endl;
+			endGame = true;
+		} catch (const Boot&) {
+			std::cout << "You caught boot! You lose." << std::endl;
+			endGame = true;
+		} catch (const std::runtime_error& e) {
+			std::cerr << e.what() << std::endl;
+		} catch (const std::exception& e) {
+			std::cout << e.what() << ". Try again." << std::endl;
 			++attemptCounter;
 		}
 	}
+}
+
+void castAFishingRod() {
+	std::cout << "Enter the casting sector: ";
+	int32_t input;
+	std::cin >> input;
+
+	if (input < 0 || input >= fieldSize)
+		throw std::runtime_error{ "Out of bounds!" };
+
+	if (field[input]) field[input]->get();
+	else throw std::exception{ "Nothing" };
 }
 
 //	Задание 2. Игра по ловле рыбы
