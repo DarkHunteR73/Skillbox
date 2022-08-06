@@ -45,21 +45,25 @@ void CalcMainWindow::changeSign() {
 void CalcMainWindow::addition() {
     checkNumber(member1);
     setAction(ADDITION);
+    (*answerLine).setText("<ADDITION>");
 }
 
 void CalcMainWindow::subtraction() {
     checkNumber(member1);
     setAction(SUBTRACTION);
+    (*answerLine).setText("<SUBTRACTION>");
 }
 
 void CalcMainWindow::multiplication() {
     checkNumber(member1);
     setAction(MULTIPLICATION);
+    (*answerLine).setText("<MULTIPLICATION>");
 }
 
 void CalcMainWindow::division() {
     checkNumber(member1);
     setAction(DIVISION);
+    (*answerLine).setText("<DIVISION>");
 }
 
 void CalcMainWindow::getAnswer() {
@@ -68,17 +72,17 @@ void CalcMainWindow::getAnswer() {
 
     switch (currentAction) {
         case ADDITION:
-            answerLine->setText(QString::number(member1 + member2).replace('.', ','));
+            answerLine->setText(QString::number(member1 + member2, 'f', 12).replace('.', ','));
             break;
         case SUBTRACTION:
-            answerLine->setText(QString::number(member1 - member2).replace('.', ','));
+            answerLine->setText(QString::number(member1 - member2, 'f', 12).replace('.', ','));
             break;
         case MULTIPLICATION:
-            answerLine->setText(QString::number(member1 * member2).replace('.', ','));
+            answerLine->setText(QString::number(member1 * member2, 'f', 12).replace('.', ','));
             break;
         case DIVISION:
             if (member2 != 0)
-                answerLine->setText(QString::number(member1 / member2).replace('.', ','));
+                answerLine->setText(QString::number(member1 / member2, 'f', 12).replace('.', ','));
             else
                 answerLine->setText("<ERROR>");
             break;
@@ -117,7 +121,31 @@ void CalcMainWindow::setAction(CalcMainWindow::Action action = NONE) {
 }
 
 void CalcMainWindow::checkNumber(double &num) {
-    QString tmp{ (*currentLine)->text().replace(',', '.') };
+    QString tmp{ (*currentLine)->text() };
+    int pointIndex = tmp.indexOf(',');
+    if (pointIndex > 0) {
+        tmp[pointIndex] = '.';
+
+        int tailIndex{ tmp.length() - 1 };
+        int count{ 0 };
+        for (int i = tailIndex; i > 0; --i) {
+            if (tmp[i] == '0') {
+                tailIndex = i;
+                ++count;
+            } else if (tmp[i] == '.') {
+                tailIndex = i;
+                ++count;
+                pointIndex = -1;
+                break;
+            } else { break; }
+        }
+        if (count > 0)
+            tmp.remove(tailIndex, count);
+    }
+
     num = tmp.toDouble();
-    (*currentLine)->setText(QString::number(num).replace('.', ','));
+
+    (*currentLine)->setText(QString::number(num, 'g',
+                                            (pointIndex > 0 ? tmp.length() - 1 : tmp.length())
+    ).replace('.', ','));
 }
