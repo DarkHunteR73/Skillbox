@@ -9,7 +9,7 @@ ImageButton::ImageButton(QWidget *parent)
     mButtonDownPixmap = QPixmap("redbutton_down.png");
     mCurrentButtonPixmap = mButtonUpPixmap;
     setGeometry(mCurrentButtonPixmap.rect());
-    connect(this, &QPushButton::clicked, this, &QPushButton::setDown);
+    connect(this, &QPushButton::clicked, this, &ImageButton::setDown);
 }
 
 void ImageButton::paintEvent(QPaintEvent *e)
