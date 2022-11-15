@@ -32,6 +32,7 @@ target_link_libraries(Task-1 PRIVATE
 )
 
 if (WIN32)
+        set(CMAKE_PREFIX_PATH "C:/Qt/Qt5.12.12/5.12.12/mingw73_64/lib/cmake")
         set(DEBUG_SUFFIX)
         set(QT_INSTALL_PATH "${CMAKE_PREFIX_PATH}")
         if (NOT EXISTS "${QT_INSTALL_PATH}/bin")
