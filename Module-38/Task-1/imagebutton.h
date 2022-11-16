@@ -6,6 +6,8 @@
 #include <QPainter>
 #include <QPaintEvent>
 #include <QTimer>
+#include <QMediaPlayer>
+#include <QMediaContent>
 
 class ImageButton :public QPushButton
 {
@@ -24,5 +26,5 @@ private:
     QPixmap mCurrentButtonPixmap;
     QPixmap mButtonDownPixmap;
     QPixmap mButtonUpPixmap;
-    bool isDown = false;
+    QMediaPlayer* player;
 };
