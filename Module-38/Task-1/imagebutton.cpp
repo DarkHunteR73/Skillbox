@@ -10,6 +10,10 @@ ImageButton::ImageButton(QWidget *parent)
     mCurrentButtonPixmap = mButtonUpPixmap;
     setGeometry(mCurrentButtonPixmap.rect());
     connect(this, &QPushButton::clicked, this, &ImageButton::setDown);
+
+    player = new QMediaPlayer(this);
+    player->setMedia(QUrl::fromLocalFile(QFileInfo("click.wav").absoluteFilePath()));
+    player->setVolume(100);
 }
 
 void ImageButton::paintEvent(QPaintEvent *e)
@@ -38,6 +42,9 @@ void ImageButton::setDown()
     mCurrentButtonPixmap = mButtonDownPixmap;
     update();
     QTimer::singleShot(100, this, &ImageButton::setUp);
+
+    player->stop();
+    player->play();
 }
 
 void ImageButton::setUp()

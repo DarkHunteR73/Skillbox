@@ -15,6 +15,8 @@ find_package(Qt5 REQUIRED COMPONENTS
         Core
         Gui
         Widgets
+        Multimedia
+        MultimediaWidgets
 )
 
 set(PROJECT_SOURCES
@@ -29,6 +31,8 @@ target_link_libraries(Task-1 PRIVATE
         Qt5::Core
         Qt5::Gui
         Qt5::Widgets
+        Qt5::Multimedia
+        Qt5::MultimediaWidgets
 )
 
 if (WIN32)
