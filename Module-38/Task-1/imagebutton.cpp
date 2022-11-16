@@ -12,7 +12,7 @@ ImageButton::ImageButton(QWidget *parent)
     connect(this, &QPushButton::clicked, this, &ImageButton::setDown);
 
     player = new QMediaPlayer(this);
-    player->setMedia(QUrl::fromLocalFile(QString("click.wav")));
+    player->setMedia(QUrl::fromLocalFile(QFileInfo("click.wav").absoluteFilePath()));
     player->setVolume(100);
 }
 

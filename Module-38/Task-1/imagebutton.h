@@ -8,6 +8,7 @@
 #include <QTimer>
 #include <QMediaPlayer>
 #include <QMediaContent>
+#include <QFileInfo>
 
 class ImageButton :public QPushButton
 {
@@ -28,3 +29,5 @@ private:
     QPixmap mButtonUpPixmap;
     QMediaPlayer* player;
 };
+
+#include "main.moc"
