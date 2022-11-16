@@ -43,6 +43,7 @@ void ImageButton::setDown()
     update();
     QTimer::singleShot(100, this, &ImageButton::setUp);
 
+    player->stop();
     player->play();
 }
 
