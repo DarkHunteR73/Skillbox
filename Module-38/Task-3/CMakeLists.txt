@@ -6,6 +6,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 if (WIN32)
         set(CMAKE_PREFIX_PATH "C:/Qt/Qt5.12.12/5.12.12/mingw73_64/lib/cmake")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DWIN32")
 endif ()
 
 set(CMAKE_AUTOUIC ON)

@@ -1,7 +1,15 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#pragma once
+
 #include <QMainWindow>
+
+#include <QGraphicsScene>
+#include <QGraphicsBlurEffect>
+#include <QGraphicsPixmapItem>
+#include <QPainter>
+#include <QFileDialog>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +23,12 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void openImage();
+
 private:
+    QImage blurImage(QImage source, int blurRadius);
+
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H
