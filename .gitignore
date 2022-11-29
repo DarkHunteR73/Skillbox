@@ -17,8 +17,10 @@
 mono_crash.*
 
 # Build results
+*[Dd]ebug/
 [Dd]ebug/
 [Dd]ebugPublic/
+*[Rr]elease/
 [Rr]elease/
 [Rr]eleases/
 x64/
@@ -27,6 +29,7 @@ x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
+[Bb]uild/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
@@ -364,3 +367,4 @@ FodyWeavers.xsd
 out/
 .idea/
 cmake*/
+.vscode/
