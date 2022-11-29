@@ -10,5 +10,3 @@ int main(int argc, char *argv[])
     redButton.show();
     return a.exec();
 }
-
-#include "main.moc"

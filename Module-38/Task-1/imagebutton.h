@@ -29,3 +29,5 @@ private:
     QPixmap mButtonUpPixmap;
     QMediaPlayer* player;
 };
+
+#include "main.moc"
