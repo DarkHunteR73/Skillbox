@@ -5,6 +5,7 @@
 
 #include <QMainWindow>
 
+#include <QImage>
 #include <QGraphicsScene>
 #include <QGraphicsBlurEffect>
 #include <QGraphicsPixmapItem>
@@ -30,5 +31,6 @@ private:
     QImage blurImage(QImage source, int blurRadius);
 
     Ui::MainWindow *ui;
+    QImage originalImage;
 };
 #endif // MAINWINDOW_H
