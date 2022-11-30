@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
         , ui->imageField
         , [&]()
         {
-            ui->imageField->setPixmap(QPixmap::fromImage(blurImage(ui->imageField->pixmap()->toImage()
+            ui->imageField->setPixmap(QPixmap::fromImage(blurImage(originalImage
                 , ui->horizontalSlider->value()).scaled(ui->imageField->width()
                     , ui->imageField->height()
                     , Qt::KeepAspectRatio
@@ -40,7 +40,8 @@ void MainWindow::openImage()
         , "JPG images (*.jpg *.jpeg)"
     );
 
-    ui->imageField->setPixmap(QPixmap(filePath).scaled(ui->imageField->width()
+    originalImage = QImage(filePath);
+    ui->imageField->setPixmap(QPixmap::fromImage(originalImage).scaled(ui->imageField->width()
         , ui->imageField->height()
         , Qt::KeepAspectRatio)
     );
